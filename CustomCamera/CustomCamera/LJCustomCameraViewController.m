@@ -108,7 +108,7 @@
     [self initAVCaptureSession];
     
      [self setUpGesture];
-    self.effectiveScale = self.beginGestureScale = MinEffectiveScale;
+     self.effectiveScale = self.beginGestureScale = MinEffectiveScale;
     
     
 }
@@ -329,13 +329,7 @@
      [self.CaptureDevice lockForConfiguration:nil];
      //必须判定是否有闪光灯，否则如果没有闪光灯会崩溃
     if ([self.CaptureDevice hasFlash]) {
-//        if (self.CaptureDevice.flashMode == flashMode) {
-//            self.CaptureDevice.flashMode = AVCaptureFlashModeOn;
-//        } else if (self.CaptureDevice.flashMode == flashMode) {
-//            self.CaptureDevice.flashMode = AVCaptureFlashModeAuto;
-//        } else if (self.CaptureDevice.flashMode == flashMode) {
             self.CaptureDevice.flashMode = flashMode;
-//        }
         // 关闭闪光灯
          [self.CaptureDevice setTorchMode:AVCaptureTorchModeOff];
      }
@@ -395,8 +389,6 @@
         if (self.effectiveScale < MinEffectiveScale){
             self.effectiveScale = MinEffectiveScale;
         }
-        
-        NSLog(@"%f-------------->%f------------recognizerScale%f",self.effectiveScale,self.beginGestureScale,recognizer.scale);
        
         CGFloat maxScaleAndCropFactor = [[self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo] videoMaxScaleAndCropFactor];
         
